@@ -1,7 +1,7 @@
 ### Blog Site Using PHP, HTML/CSS
 
 <p align="center">
-  <img src="phpBlog.png" alt="PHP Blog Preview" width="100%">
+  <img src="phpBlog1.png" alt="PHP Blog Preview" width="100%">
 </p>
 
 This is a simple blog site I created with PHP and HTML/CSS, I've been learning and practicing PHP for about 2 weeks now and this is the first mini-project I made, hopefully I'll upgrade it and make it better
