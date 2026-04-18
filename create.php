@@ -1,5 +1,6 @@
 <?php
 
+        session_start();
       require_once 'db.php';
 
       $title = "";
@@ -7,7 +8,18 @@
       $error = "";
       $success = "";
 
+      // Generate token if one doesn't exist
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
       if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+         if (!isset($_POST['csrf_token']) ||
+        $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Invalid request.");
+    }
+
           $title = trim($_POST['title']);
           $content = trim($_POST['content']);
 
@@ -76,7 +88,10 @@
                 <label for="content">Content</label>
                 <textarea name="content" id="content"
                           rows="10"><?php echo $content; ?></textarea>
+                         
             </div>
+             <input type="hidden" name="csrf_token"
+                        value="<?php echo $_SESSION['csrf_token']; ?>">
             <button type="submit" class="btn">Publish Post</button>
         </form>
     </div>
