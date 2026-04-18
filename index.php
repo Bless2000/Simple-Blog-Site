@@ -43,13 +43,17 @@
                     <?php echo htmlspecialchars($post['title']); ?>
                 </a></h2>
                 <div class="meta">Posted on <?php echo htmlspecialchars($post['created_at']); ?></div>
-                <a href="delete.php?id=<?php echo $post['id']; ?>" class="delete-link">Delete</a>
+                <form action="delete.php" method="POST" style="display:inline;">
+                    <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
+                      <button type="submit" class="delete-btn">Delete</button>
+                </form>
+                <a href="editPost.php?id=<?php echo $post['id']; ?>" class="edit-btn">Edit</a>
             </div>
         <?php endforeach; ?>
     <?php else: ?>
         <p class="empty">No posts yet. <a href="create.php">Write the first one.</a></p>
     <?php endif; ?>
 </div>
-  
+
  </body>
  </html>
